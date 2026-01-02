@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {CreateCategory, DeleteCategory,SeeItems,EditingCategory} = require("../controllers/categoryController")
+const {CreateCategory, DeleteCategory,SeeItems,EditingCategory,SaveUpdate} = require("../controllers/categoryController")
 
 // Importando model de categoria.
 const Category = require("../config/database/models/Category")
@@ -14,6 +14,6 @@ router.use("/createcategory",CreateCategory)
 router.use("/deletecategory",DeleteCategory)
 router.use("/seeitems",SeeItems)
 router.use("/editcategory/:id",EditingCategory)
-
+router.post("/update",SaveUpdate)
 
 module.exports =  router;

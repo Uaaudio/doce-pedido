@@ -7,10 +7,11 @@
     <br>
     <br>
     <br>
-    <form method="POST" action="/category/createcategory" >
-
+    <form method="POST" action="/category/update" >
+        
         <input name="categoryName" class="form-control form-control-lg type=" placeholder="<%= category.categoryName %>">
         <br>
+        <input name="categoryId" type="hidden" value="<%= category.categoryId %>">
         <button class="btn btn-primary">Editar Categoria</button>
 
     </form>

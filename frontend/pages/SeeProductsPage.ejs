@@ -4,6 +4,7 @@
         <th>Produto</th>
         <th>Preço</th>
         <th>Categoria</th>
+        <th>Ação</th>
     </tr>
     <% allproducts.forEach(function(product) { %>
     
@@ -11,6 +12,12 @@
         <td><%= product.productName %></td>
         <td><%= product.productPrice %></td>
         <td><%= product.categoryId %></td>
+
+        <form method="POST" action="">
+            <input type="hidden" value="<%= product.categoryId %>">
+            <td><button class="btn btn-warning">Editar</button></td>
+        </form>
+
     </tr>
 
     <% }); %>

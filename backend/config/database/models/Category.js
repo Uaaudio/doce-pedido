@@ -27,6 +27,7 @@ const Category = Connection.define("categories",{
 
     
 })
+//Category.sync({force:true}).then("tabela conectada com sucesso!")
 
 
 module.exports = Category;

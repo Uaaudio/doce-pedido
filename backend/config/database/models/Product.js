@@ -32,6 +32,7 @@ const Product = Connection.define("products",{
 Category.hasMany(Product)
 Product.belongsTo(Category)
 
+//Product.sync({force:true}).then("tabela conectada com sucesso!")
 
 
 module.exports = Product

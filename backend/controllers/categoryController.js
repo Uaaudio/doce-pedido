@@ -60,7 +60,23 @@ async function EditingCategory(req,res){
         console.log("Falha ao alterar nome da Categoria")
         res.redirect("/category")
     })
-
-
 }
-module.exports = { CreateCategory,DeleteCategory,SeeItems,EditingCategory};
+
+async function SaveUpdate(req,res){
+    const id = req.body.categoryId
+    const nameToUpdate = req.body.categoryName
+    try{
+        await Category.update(
+            {categoryName:nameToUpdate },
+            {where: {id:id}}
+
+        )
+       return res.redirect("/category")
+    }catch(error){
+        console.error("erro ao editar categoria")
+        return res.redirect("/category")
+    }
+    
+}
+
+module.exports = { CreateCategory,DeleteCategory,SeeItems,EditingCategory,SaveUpdate};
