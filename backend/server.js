@@ -11,6 +11,7 @@ const Connection = require("./config/database/connection");
 //const Category = require("./config/database/models/Category")
 //const Product = require("./config/database/models/Product")
 
+
 //configurando View engine.
 const ejs = require("ejs")
 app.set("view engine", "ejs")
@@ -35,8 +36,10 @@ app.use(express.json())
 // importando minhas rotas.
 const categoryRoute = require("./routes/categoryRoute")
 const productRoute =  require("./routes/productRoute")
+const homeRoute = require("./routes/homeRoute")
 
 // Usando minhas rotas.
+app.use("/",homeRoute)
 app.use("/category",categoryRoute)
 app.use("/product",productRoute)
 

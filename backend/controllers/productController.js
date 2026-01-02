@@ -23,7 +23,7 @@ async function CreateProduct(req, res) {
             categoryId
         })
 
-        res.redirect("/product")
+        return res.redirect("/product")
 
     } catch (error) {
         console.error("Erro ao criar produto")
@@ -32,4 +32,49 @@ async function CreateProduct(req, res) {
     }
 }
 
-module.exports = { ManageProduct, CreateProduct }
+
+
+
+async function EditingProduct(req,res){
+
+    const id = req.params.id
+
+    const product =  await Product.findByPk(id)
+
+    return res.render("EditProduct",{product})
+
+    .catch((error)=>{
+        console.log("Erro ao acessar a pagina de edição dos produtos")
+        console.log(error)
+    })
+
+
+
+}
+
+async function EditProduct(req,res){
+
+    const name = req.body.productName
+    const price = req.body.productPrice
+    const id = req.body.productId
+    
+     await Product.update(
+            { productName: name, productPrice: price }, // valores a atualizar
+            { where: { id: id } }                       // condição
+        )
+    
+    .then((product)=>{
+        console.log("Produto editado com sucesso")
+        return res.redirect("/category")
+    
+    }).catch((error)=>{
+       
+        console.log("Erro ao Editar produto")
+        console.log(error)
+    })
+    
+
+}
+
+
+module.exports = { ManageProduct, CreateProduct , EditingProduct,EditProduct}

@@ -13,10 +13,10 @@
         <td><%= product.productPrice %></td>
         <td><%= product.categoryId %></td>
 
-        <form method="POST" action="">
-            <input type="hidden" value="<%= product.categoryId %>">
-            <td><button class="btn btn-warning">Editar</button></td>
-        </form>
+        
+           
+        <td><a href="/product/edit/<%= product.id %>"><button class="btn btn-warning">Editar</button></a></td>
+        
 
     </tr>
 

@@ -1,0 +1,28 @@
+<%- include ('../partials/header.ejs') %>
+<div class="container">
+    
+    <br>
+    <h2>Editar Produto</h2>
+    <hr>
+    <br>
+    <br>
+    <br>
+    <form method="POST" action="/product/update" >
+        
+        <input name="productName" class="form-control form-control-lg " placeholder="<%= product.productName %>">
+        <br>
+        <h4>Valor:</h4>
+        <br>
+        <input name="productPrice" class="form-control form-control-lg"  type="number" placeholder="<%= product.productPrice %>">
+        <input type="hidden" name="productId" value="<%= product.id %>">
+        
+        <br>
+        <button class="btn btn-primary">Editar Produto</button>
+
+    </form>
+
+</div>
+
+
+
+<%- include ('../partials/footer.ejs') %>

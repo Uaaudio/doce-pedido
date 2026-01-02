@@ -1,3 +1,4 @@
+
 const Category = require("../config/database/models/Category");
 const Product = require("../config/database/models/Product")
 
@@ -62,21 +63,10 @@ async function EditingCategory(req,res){
     })
 }
 
-async function SaveUpdate(req,res){
-    const id = req.body.categoryId
-    const nameToUpdate = req.body.categoryName
-    try{
-        await Category.update(
-            {categoryName:nameToUpdate },
-            {where: {id:id}}
 
-        )
-       return res.redirect("/category")
-    }catch(error){
-        console.error("erro ao editar categoria")
-        return res.redirect("/category")
-    }
-    
-}
 
-module.exports = { CreateCategory,DeleteCategory,SeeItems,EditingCategory,SaveUpdate};
+
+
+
+
+module.exports = { CreateCategory,DeleteCategory,SeeItems,EditingCategory};
