@@ -1,0 +1,22 @@
+<%- include ('../partials/header.ejs') %>
+<div class="container">
+    
+    <br>
+    <h2>Criar Categoria</h2>
+    <hr>
+    <br>
+    <br>
+    <br>
+    <form method="POST" action="/category/createcategory" >
+
+        <input name="categoryName" class="form-control form-control-lg type=" placeholder="<%= category.categoryName %>">
+        <br>
+        <button class="btn btn-primary">Editar Categoria</button>
+
+    </form>
+
+</div>
+
+
+
+<%- include ('../partials/footer.ejs') %>

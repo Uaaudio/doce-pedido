@@ -1,0 +1,22 @@
+<%- include ('../partials/header.ejs') %>
+<table class="table table-bordered">
+    <tr>
+        <th>Produto</th>
+        <th>Preço</th>
+        <th>Categoria</th>
+    </tr>
+    <% allproducts.forEach(function(product) { %>
+    
+        <tr>
+        <td><%= product.productName %></td>
+        <td><%= product.productPrice %></td>
+        <td><%= product.categoryId %></td>
+    </tr>
+
+    <% }); %>
+
+
+</table>
+
+
+<%- include ('../partials/footer.ejs') %>

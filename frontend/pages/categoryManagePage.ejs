@@ -1,0 +1,67 @@
+<%- include ('../partials/header.ejs') %>
+<div class="container">
+    
+    <br>
+    <h2>Criar Categoria</h2>
+    <hr>
+    <br>
+    <a href="/product"><button class="btn btn-primary">Gerenciar Produtos</button></a>
+    <br><br>
+
+    <form method="POST" action="/category/createcategory" >
+
+        <input name="categoryName" class="form-control form-control-lg" type="text" placeholder="Insira o nome da categoria">
+        <br>
+        <input name="description" class="form-control form-control-lg" type="textfield" placeholder="Insira uma descrição">
+        <br>
+        <button class="btn btn-primary">Criar Categoria</button>
+
+        
+
+    </form>
+
+    <div class="container">
+        <br>
+        <table class="table table-bordered">
+            <tr>
+                <th><h4>Id</h4></th>
+                <th><h4>Nome</h4></th>
+                <th><h4>Ação</h4></th>
+            </tr>
+          <% categories.forEach(function(category) { %>
+            <tr>
+                <th><%= category.id %></th>
+                <th><%= category.categoryName %></th>
+
+                <th>
+                    <form  method="POST" action="/category/deletecategory">
+                        <input  name="id" type="hidden" value="<%= category.id %>">
+                        <button class="btn btn-danger btn-mg">Excluir</button>
+                    </form>
+                    <br>
+                    
+                    <form method="POST" action="/category/seeitems">
+                        <input  name="id" type="hidden" value="<%= category.id %>">
+                        <button class="btn btn-success btn-mg">Ver Produtos</button>
+
+                    </form>
+                    
+                    <br>
+                    <a href="/category/editcategory/<%= category.id %>"><button class="btn btn-warning btn-mg">Editar</button></a>
+
+
+                </th>
+            </tr>
+        <% }); %>
+
+
+
+        </table>
+    </div>
+
+
+</div>
+
+
+
+<%- include ('../partials/footer.ejs') %>
