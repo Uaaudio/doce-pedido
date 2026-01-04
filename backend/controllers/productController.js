@@ -33,8 +33,6 @@ async function CreateProduct(req, res) {
 }
 
 
-
-
 async function EditingProduct(req,res){
 
     const id = req.params.id
@@ -54,9 +52,18 @@ async function EditingProduct(req,res){
 
 async function EditProduct(req,res){
 
-    const name = req.body.productName
-    const price = req.body.productPrice
+    let name = req.body.productName
+    let price = req.body.productPrice
     const id = req.body.productId
+
+    productIdentify = await Product.findByPk(id)
+
+    if ( name == undefined || name == ""){
+        name = productIdentify.productName
+    }
+    if (price == undefined || price == ""){
+        price = productIdentify.productPrice
+    }
     
      await Product.update(
             { productName: name, productPrice: price }, // valores a atualizar
