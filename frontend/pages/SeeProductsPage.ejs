@@ -1,29 +1,45 @@
 <%- include ('../partials/header.ejs') %>
-<table class="table table-bordered">
-    <tr>
-        <th>Produto</th>
-        <th>Preço</th>
-        <th>Categoria</th>
-        <th>Ação</th>
-    </tr>
-    <% allproducts.forEach(function(product) { %>
+
+<div class="container">
+    <hr>
+    <div class="card">
+        <div class="card-header">
+            <h2>Produtos da Categoria</h2>
+        </div>
+        <div class="card-body">
+
+            <table class="table table-bordered table-hover">
+                <tr class="table-dark">
+                    <th>Produto</th>
+                    <th>Preço</th>
+                    <th>Categoria</th>
+                    <th>Ação</th>
+                </tr>
+                <% allproducts.forEach(function(product) { %>
+                
+                    <tr class="table-light">
+                    <td><%= product.productName %></td>
+                    <td><%= product.productPrice %></td>
+                    <td><%= product.categoryId %></td>
+            
+                    <td><a href="/product/edit/<%= product.id %>"><button class="btn btn-warning">Editar</button></a>
+            
+                    <a href="/product/delete/<%= product.id %>"><button class="btn btn-danger">Deletar</button><a href=""></a>
+                    
+                    </td>
+                   
+                </tr>
+            
+                <% }); %>
+            
+            
+            </table>
+        </div>
+    </div>
+
     
-        <tr>
-        <td><%= product.productName %></td>
-        <td><%= product.productPrice %></td>
-        <td><%= product.categoryId %></td>
+</div>
 
-        
-           
-        <td><a href="/product/edit/<%= product.id %>"><button class="btn btn-warning">Editar</button></a></td>
-        
-
-    </tr>
-
-    <% }); %>
-
-
-</table>
 
 
 <%- include ('../partials/footer.ejs') %>

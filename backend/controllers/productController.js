@@ -83,5 +83,22 @@ async function EditProduct(req,res){
 
 }
 
+async function DeleteProduct(req,res) {
 
-module.exports = { ManageProduct, CreateProduct , EditingProduct,EditProduct}
+    const id = req.params.id
+
+    await Product.destroy({
+        where:{id:id}
+    }).then((product)=>{
+
+        console.log("Produto: "+product.productName+" deletado com sucesso")
+        res.redirect("/category");
+    }).catch(error =>{
+
+        console.log("Erro ao deletar produto")
+    });
+    
+}
+
+
+module.exports = { ManageProduct, CreateProduct , EditingProduct,EditProduct,DeleteProduct}

@@ -1,20 +1,37 @@
 <%- include ('../partials/header') %>
 
+
+
 <div class="container">
-<br><br>
-<center><h2>Login</h2></center>
+    <br>
+    <hr>
+    <br><br><br>
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <center><h2>Login</h2></center>
+        </div>
+        
+        
+        <div class="card-body bg-dark text-white">
 
-<form method="POST" action="/login">
-    <center>
-    <input type="text" name="login" placeholder="Insira seu login">
-    <br><br>
-    <input type="text" name="password" placeholder="Insira sua senha">
+                <form class="form-control" method="POST" action="/login">
+                    <center>
 
-    <button>Entrar</button>
-    </center>
-</form>
-
+                        <input class="form-control" type="text" name="login" placeholder="Insira seu login">
+                        <br><br>
+                        <input class="form-control" type="password" name="password" placeholder="Insira sua senha">
+                        <br>
+                        
+                    </center>
+                    <button class="btn btn-primary">Entrar</button>
+                </form>
+        </div>
+    
+    
+    </div>
 </div>
+
+
 
 
 <%- include ('../partials/footer') %>

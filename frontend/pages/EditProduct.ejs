@@ -8,18 +8,21 @@
     <br>
     <br>
     <form method="POST" action="/product/update" >
-        
+        <label >Nome:</label>
         <input name="productName" class="form-control form-control-lg " placeholder="<%= product.productName %>">
         <br>
-        <h4>Valor:</h4>
+        <label>Valor:</label>
         <br>
         <input name="productPrice" class="form-control form-control-lg"  type="number" placeholder="<%= product.productPrice %>">
         <input type="hidden" name="productId" value="<%= product.id %>">
         
         <br>
         <button class="btn btn-primary">Editar Produto</button>
+        <br>
+
 
     </form>
+    
 
 </div>
 
