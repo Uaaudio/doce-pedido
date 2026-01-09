@@ -1,45 +1,42 @@
-<%- include ('../partials/header.ejs') %>
+<%- include('../partials/header.ejs') %>
 
-<div class="container">
-    <hr>
-    <div class="card">
-        <div class="card-header">
-            <h2>Produtos da Categoria</h2>
-        </div>
-        <div class="card-body">
-
-            <table class="table table-bordered table-hover">
-                <tr class="table-dark">
-                    <th>Produto</th>
-                    <th>Preço</th>
-                    <th>Categoria</th>
-                    <th>Ação</th>
-                </tr>
-                <% allproducts.forEach(function(product) { %>
-                
-                    <tr class="table-light">
-                    <td><%= product.productName %></td>
-                    <td><%= product.productPrice %></td>
-                    <td><%= product.categoryId %></td>
-            
-                    <td><a href="/product/edit/<%= product.id %>"><button class="btn btn-warning">Editar</button></a>
-            
-                    <a href="/product/delete/<%= product.id %>"><button class="btn btn-danger">Deletar</button><a href=""></a>
-                    
-                    </td>
-                   
-                </tr>
-            
-                <% }); %>
-            
-            
-            </table>
-        </div>
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-header bg-dark text-white">
+      <h4 class="mb-0">Produtos da Categoria</h4>
     </div>
 
-    
+    <div class="card-body">
+      <table class="table table-hover align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Categoria</th>
+            <th class="text-center">Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% allproducts.forEach(product => { %>
+            <tr>
+              <td><%= product.productName %></td>
+              <td>R$ <%= product.productPrice %></td>
+              <td><%= product.categoryId %></td>
+              <td class="text-center">
+                <a href="/product/edit/<%= product.id %>" class="btn btn-sm btn-warning">
+                  Editar
+                </a>
+                <a href="/product/delete/<%= product.id %>" class="btn btn-sm btn-danger">
+                  Deletar
+                </a>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
-
-
-<%- include ('../partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>

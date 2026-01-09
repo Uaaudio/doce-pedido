@@ -1,37 +1,29 @@
-<%- include ('../partials/header') %>
+<%- include('../partials/header') %>
 
-
-
-<div class="container">
-    <br>
-    <hr>
-    <br><br><br>
-    <div class="card">
-        <div class="card-header bg-dark text-white">
-            <center><h2>Login</h2></center>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="card shadow">
+        <div class="card-header bg-dark text-white text-center">
+          <h4>Login</h4>
         </div>
-        
-        
-        <div class="card-body bg-dark text-white">
 
-                <form class="form-control" method="POST" action="/login">
-                    <center>
+        <div class="card-body">
+          <form method="POST" action="/login">
+            <div class="mb-3">
+              <input class="form-control" name="login" placeholder="Login" required>
+            </div>
 
-                        <input class="form-control" type="text" name="login" placeholder="Insira seu login">
-                        <br><br>
-                        <input class="form-control" type="password" name="password" placeholder="Insira sua senha">
-                        <br>
-                        
-                    </center>
-                    <button class="btn btn-primary">Entrar</button>
-                </form>
+            <div class="mb-3">
+              <input class="form-control" type="password" name="password" placeholder="Senha" required>
+            </div>
+
+            <button class="btn btn-primary w-100">Entrar</button>
+          </form>
         </div>
-    
-    
+      </div>
     </div>
+  </div>
 </div>
 
-
-
-
-<%- include ('../partials/footer') %>
+<%- include('../partials/footer') %>

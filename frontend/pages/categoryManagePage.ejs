@@ -1,78 +1,80 @@
-<%- include ('../partials/header.ejs') %>
-<div class="container">
-    <br>
-    <hr>
-    <div class="card">
-        
-        
-        <div class="card-header bg-dark text-white">
-            
-            
-                <h2>Criar Categoria</h2>
-                <br>
-                <hr>
-                <br>
-                <a href="/product"><button class="btn btn-secondary">Gerenciar Produtos</button></a>
-                <br><br>
+<%- include('../partials/header.ejs') %>
 
-        </div>
-        <div class="card-body">
-
-                        <form method="POST" action="/category/createcategory" >
-                    
-                            <input name="categoryName" class="form-control form-control-lg" type="text" placeholder="Insira o nome da categoria">
-                            <br>
-                            <input name="description" class="form-control form-control-lg" type="textfield" placeholder="Insira uma descrição">
-                            <br>
-                            <button class="btn btn-primary">Criar Categoria</button>
-                    
-                            
-                    
-                        </form>
-                    
-                            <br>
-                            <table class="table table-bordered">
-                                <tr class="table-dark table-hover">
-                                    <th><h4>Id</h4></th>
-                                    <th><h4>Nome</h4></th>
-                                    <th><h4>Ação</h4></th>
-                                </tr>
-                              <% categories.forEach(function(category) { %>
-                                <tr>
-                                    <th><%= category.id %></th>
-                                    <th><%= category.categoryName %></th>
-                    
-                                    <th>
-                                        <form  method="POST" action="/category/deletecategory">
-                                            <input  name="id" type="hidden" value="<%= category.id %>">
-                                            <button class="btn btn-danger btn-mg">Excluir</button>
-                                        </form>
-                                        <br>
-                                        
-                                        <form method="POST" action="/category/seeitems">
-                                            <input  name="id" type="hidden" value="<%= category.id %>">
-                                            <button class="btn btn-success btn-mg">Ver Produtos</button>
-                    
-                                        </form>
-                                        
-                                        <br>
-                                        <a href="/category/editcategory/<%= category.id %>"><button class="btn btn-warning btn-mg">Editar</button></a>
-                    
-                    
-                                    </th>
-                                </tr>
-                            <% }); %>
-                    
-                    
-                    
-                            </table>
-        </div>
-
-
-
-
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">Criar Categoria</h4>
+      <a href="/product" class="btn btn-secondary btn-sm">
+        Criar Produto
+      </a>
     </div>
-    
+
+    <div class="card-body">
+      <form method="POST" action="/category/createcategory">
+        <div class="mb-3">
+          <input
+            name="categoryName"
+            class="form-control"
+            type="text"
+            placeholder="Nome da categoria"
+            required
+          >
+        </div>
+
+        <div class="mb-3">
+          <input
+            name="description"
+            class="form-control"
+            type="text"
+            placeholder="Descrição"
+          >
+        </div>
+
+        <button class="btn btn-primary w-100">Criar Categoria</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="card shadow mt-4">
+    <div class="card-header bg-secondary text-white">
+      <h5 class="mb-0">Categorias cadastradas</h5>
+    </div>
+
+    <div class="card-body">
+      <table class="table table-hover align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th class="text-center">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% categories.forEach(category => { %>
+            <tr>
+              <td><%= category.id %></td>
+              <td><%= category.categoryName %></td>
+              <td class="text-center">
+                <form method="POST" action="/category/deletecategory" class="d-inline">
+                  <input type="hidden" name="id" value="<%= category.id %>">
+                  <button class="btn btn-sm btn-danger">Excluir</button>
+                </form>
+
+                <form method="POST" action="/category/seeitems" class="d-inline">
+                  <input type="hidden" name="id" value="<%= category.id %>">
+                  <button class="btn btn-sm btn-success">Produtos</button>
+                </form>
+
+                <a href="/category/editcategory/<%= category.id %>" class="btn btn-sm btn-warning">
+                  Editar
+                </a>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
-<%- include ('../partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>

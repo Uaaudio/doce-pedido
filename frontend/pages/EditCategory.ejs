@@ -1,25 +1,28 @@
-<%- include ('../partials/header.ejs') %>
-<div class="container">
-    
-    <br>
-    <h2>Criar Categoria</h2>
-    <hr>
-    <br>
-    <br>
-    <br>
-    <form method="POST" action="/category/update" >
-        
-        <input name="categoryName" class="form-control form-control-lg type=" placeholder="<%= category.categoryName %>">
-        <br>
+<%- include('../partials/header.ejs') %>
+
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-header bg-dark text-white">
+      <h4 class="mb-0">Editar Categoria</h4>
+    </div>
+
+    <div class="card-body">
+      <form method="POST" action="/category/update">
         <input type="hidden" name="categoryId" value="<%= category.id %>">
-        
 
-        <button class="btn btn-primary">Editar Categoria</button>
+        <div class="mb-3">
+          <input
+            name="categoryName"
+            class="form-control"
+            value="<%= category.categoryName %>"
+            required
+          >
+        </div>
 
-    </form>
-
+        <button class="btn btn-primary w-100">Salvar Alterações</button>
+      </form>
+    </div>
+  </div>
 </div>
 
-
-
-<%- include ('../partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>
